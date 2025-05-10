@@ -1,9 +1,7 @@
-# Fall Detection System
+# Fall Detection Video Dataset Processing
 
-## Overview
+This directory contains a set of Python scripts to process video data for a fall detection system. The pipeline involves extracting keypoints from videos, processing these keypoints into sequences, splitting the dataset, and counting the generated sequences.
 
-The Fall Detection System is an integrated solution that uses computer vision to detect falls in real-time. The system is designed to monitor elderly or vulnerable individuals and provide immediate notifications when a fall is detected.
+## Scripts Overview
 
-![Fall Detection System](https://placehold.co/800x400?text=Fall+Detection+System)
-
-
+### 1. `utils`
