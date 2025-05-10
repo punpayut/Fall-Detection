@@ -1,4 +1,4 @@
-# Fall Detection System
+# Fall Detection System (This project is currently in progress and will be completed soon. Stay tuned! )
 
 ## Overview
 
@@ -10,7 +10,7 @@ The Fall Detection System is an integrated solution that uses computer vision to
 
 ![Fall Detection Demo](/images/fall_detection_demo.gif)
 
-##This project is currently in progress and will be completed soon. Stay tuned! 
+
 
 
 
