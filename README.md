@@ -1,5 +1,5 @@
 # Fall Detection System 
-(This project is currently in progress and will be completed soon. Stay tuned! )
+<span style="color:red;">This project is currently in progress and will be completed soon. Stay tuned!</spaan>
 
 ## Overview
 
