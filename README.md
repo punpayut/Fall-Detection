@@ -1,4 +1,5 @@
-# Fall Detection System (This project is currently in progress and will be completed soon. Stay tuned! )
+# Fall Detection System 
+(This project is currently in progress and will be completed soon. Stay tuned! )
 
 ## Overview
 
