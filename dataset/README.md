@@ -8,4 +8,4 @@
 
 [4. My processed dataset3 was split into train:val:test = 70:15:15 (%), with a fall-to-no_fall ratio of 51.9:48.1 (%).](https://kaggle.com/datasets/75677dc8b5ba1470e386be3c6a6796df55a0f8663e8441c564e6a9f754b60035)
 
-[5. My processed dataset4 was split into train:val:test = 70:15:15 (%), with a fall-to-no_fall ratio of 51.9:48.1 (%).](https://kaggle.com/datasets/5996e3fa6fbf6e2972706ada4dc32c7b478779087bc03080e0feb03f302dfb42)
+[5. My processed dataset4 was split into train:val:test = 70:15:15 (%), with a fall-to-no_fall ratio of 52.2:47.8 (%).](https://kaggle.com/datasets/5996e3fa6fbf6e2972706ada4dc32c7b478779087bc03080e0feb03f302dfb42)
