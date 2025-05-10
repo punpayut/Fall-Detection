@@ -1,6 +1,6 @@
 # Dataset
 
-[1. Raw video and the extracted keypoints (in CSV format) were prepared for fall detection analysis.](https://www.kaggle.com/datasets/payutch/fall-video-dataset)
+[1. Raw video (MP4) and the extracted keypoints (in CSV format) were prepared for fall detection analysis.](https://www.kaggle.com/datasets/payutch/fall-video-dataset)
 
 [2. My processed dataset1 was split into train:val:test = 70:15:15 (%), with a fall-to-no_fall ratio of 45.7:54.3 (%).](https://kaggle.com/datasets/4c1a2059e5cd2410e95d5866083fd34a4ded01769cbe54251e9dfee790d019a7)
 
