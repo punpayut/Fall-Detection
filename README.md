@@ -1,5 +1,5 @@
 # Fall Detection System 
-smiley:This project is currently in progress and will be completed soon. Stay tuned!
+:smiley:This project is currently in progress and will be completed soon. Stay tuned!
 
 ## Overview
 
