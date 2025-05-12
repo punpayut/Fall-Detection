@@ -4,7 +4,7 @@ This repository contains Jupyter notebooks exploring different models for fall d
 
 ## Notebook Summaries
 
-### 1. `notebook/fall-detection-bilstm-f1-bl.ipynb`
+### 1. `notebook/fall-detection-bilstm-f1-bl.ipynb` -- I use this notebook for base line
 
 *   **Objective:** Classify sequences of human pose keypoints (30 frames x 51 features) as 'fall' or 'no_fall'.
 *   **Data:** Loads pre-processed `.npy` keypoint sequences from train/validation/test splits. Normalizes X/Y coordinates.
