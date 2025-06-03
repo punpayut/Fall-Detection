@@ -1,0 +1,5 @@
+gradio
+opencv-python-headless
+mediapipe
+numpy
+tflite-runtime
