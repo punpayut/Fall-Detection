@@ -133,24 +133,65 @@ Press `q` in the "Fall Detection Monitor" window to stop the script.
 The script logs events (start, stop, fall detections, errors) to fall_detection_log.txt by default.
 
 ## Troubleshooting
-**"Error: Cannot open webcam":**
-Ensure your webcam is properly connected and recognized by the Raspberry Pi (ls /dev/video* should list devices).
-Check CAMERA_INDEX in the script if you have multiple cameras.
-Make sure no other application is using the webcam.
-Permissions: Your user might need to be in the video group: sudo usermod -a -G video $USER (logout and login again after this).
-Low FPS / Slow Performance:
-Running on a Raspberry Pi 5 is recommended.
-Ensure the Pi is adequately powered and cooled.
-The pose_complexity in the script (default 1) can be set to 0 for faster but less accurate pose estimation.
-Reduce FRAME_WIDTH and FRAME_HEIGHT for the camera.
-ImportError: ... (e.g., for cv2 or mediapipe):
-Ensure you have activated the virtual environment (source .venv/bin/activate).
-Try reinstalling the problematic package: pip uninstall <package_name> then pip install <package_name>.
-TensorFlow Lite Model Error:
-Verify MODEL_PATH is correct.
-Ensure the model input shape matches the script's configuration (INPUT_TIMESTEPS, NUM_FEATURES). The script has checks for this.
-Telegram messages not sent:
-Double-check TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID in your .env file.
-Ensure ENABLE_TELEGRAM_ALERTS is True in the script.
-Verify the Raspberry Pi has an active internet connection.
-Check fall_detection_log.txt for any error messages related to Telegram.
+
+*   **"Error: Cannot open webcam"**:
+    *   Ensure your webcam is properly connected and recognized by the Raspberry Pi. You can check available video devices by running:
+        ```bash
+        ls /dev/video*
+        ```
+    *   Check the `CAMERA_INDEX` constant in `fall-detector.py` if you have multiple cameras (e.g., `0` for the first, `1` for the second).
+    *   Make sure no other application is currently using the webcam.
+    *   **Permissions**: Your user might need to be part of the `video` group. Add your user to the group with:
+        ```bash
+        sudo usermod -a -G video $USER
+        ```
+        You'll need to log out and log back in for this change to take effect.
+
+*   **Low FPS / Slow Performance**:
+    *   Running on a Raspberry Pi 5 is highly recommended for better performance.
+    *   Ensure your Raspberry Pi has an adequate power supply and is not overheating (which can cause thermal throttling).
+    *   The `pose_complexity` variable within the `fall-detector.py` script (default is `1`) can be set to `0`. This will make MediaPipe's pose estimation faster but potentially less accurate.
+        ```python
+        # Inside fall-detector.py, near the MediaPipe Pose initialization
+        pose_complexity = 0 # Faster, less accurate
+        # pose_complexity = 1 # Default
+        # pose_complexity = 2 # Slower, more accurate
+        ```
+    *   Consider reducing the `FRAME_WIDTH` and `FRAME_HEIGHT` constants in `fall-detector.py` to process smaller images, which can improve speed.
+
+*   **`ImportError: ...` (e.g., for `cv2`, `mediapipe`, `tflite_runtime`)**:
+    *   Make sure you have activated the Python virtual environment before running the script:
+        ```bash
+        source .venv/bin/activate
+        ```
+    *   If the error persists, try reinstalling the problematic package within the activated virtual environment:
+        ```bash
+        pip uninstall <package_name>
+        pip install <package_name>
+        ```
+        For example:
+        ```bash
+        pip uninstall opencv-python
+        pip install opencv-python
+        ```
+
+*   **TensorFlow Lite Model Error ("Model's expected input shape ... does not match ...")**:
+    *   Verify that the `MODEL_PATH` constant in `fall-detector.py` points to the correct TFLite model file.
+    *   Crucially, ensure that the model's expected input shape (number of timesteps and number of features per timestep) matches the configuration in the script. The script has built-in checks and will print an error message if there's a mismatch.
+        *   `INPUT_TIMESTEPS` in the script must match the first dimension (after batch) of the model's input.
+        *   `NUM_FEATURES` (derived from `NUM_KEYPOINTS_TRAINING * 3`) must match the second dimension of the model's input.
+        *   Adjust `INPUT_TIMESTEPS` or review `KEYPOINT_DICT_TRAINING` and `SORTED_YOUR_KEYPOINT_NAMES` in `fall-detector.py` if these values don't align with your trained model.
+
+*   **Telegram messages not being sent**:
+    *   Double-check the `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` values in your `.env` file. Ensure there are no extra spaces or typos.
+    *   Verify that `ENABLE_TELEGRAM_ALERTS` is set to `True` in `fall-detector.py`.
+    *   Confirm that your Raspberry Pi has an active and stable internet connection.
+    *   Inspect the `fall_detection_log.txt` file for any error messages related to Telegram API requests (e.g., "Error sending Telegram message: ...").
+    *   If you recently created the bot or started a chat, ensure you've sent at least one message *to* the bot from your Telegram account so it can identify your `CHAT_ID`.
+
+*   **Python script does not run or shows permission denied**:
+    *   Ensure the script file has execute permissions:
+        ```bash
+        chmod +x fall-detector.py
+        ```
+    *   Then try running with `python3 fall-detector.py` or `./fall-detector.py` (if you add a shebang like `#!/usr/bin/env python3` to the top of the script).
