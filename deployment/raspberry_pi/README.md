@@ -120,12 +120,14 @@ python fall-detector.py --source webcam
 
 A window titled "Fall Detection Monitor" should appear showing the camera feed with pose landmarks and status.
 
-Using a Video File:
+#Using a Video File:
+```bash
 python fall-detector.py --source file --file /path/to/your/video.mp4
+```
+Replace `/path/to/your/video.mp4` with the actual path to your video file.
 
-Replace /path/to/your/video.mp4 with the actual path to your video file.
-Exiting the Program
-Press q in the "Fall Detection Monitor" window to stop the script.
+#Exiting the Program
+Press `q` in the "Fall Detection Monitor" window to stop the script.
 
 Logging
 The script logs events (start, stop, fall detections, errors) to fall_detection_log.txt by default.
