@@ -112,10 +112,11 @@ Ensure your virtual environment is activated (`source .venv/bin/activate`).
 ### Using Webcam:
 ```bash
 python fall-detector.py
-
+```
 Or explicitly:
-
+```bash
 python fall-detector.py --source webcam
+```
 
 A window titled "Fall Detection Monitor" should appear showing the camera feed with pose landmarks and status.
 
